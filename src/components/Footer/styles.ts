@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.footer`
+  padding: 10px
   position: fixed;
   left: 0;
   bottom: 0;
@@ -12,9 +13,15 @@ export const Container = styled.footer`
 export const Content = styled.div`
   display: flex;
   align-items: flex-start;
-  flex-direction: column;
 
   a {
-    padding: 10px;
+    color: #fff;
+    font-size: 14px;
   }
+`;
+
+export const LinksMarvel = styled.div`
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
 `;

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 
 import marvelLogoFooterImg from '../../assets/MarvelLogoFooter.svg';
 
-import { Container, Content } from './styles';
+import { Container, Content, LinksMarvel } from './styles';
 
 const Footer: React.FC = () => {
   const currentDate = useMemo(() => {
@@ -12,20 +12,15 @@ const Footer: React.FC = () => {
   return (
     <Container>
       <Content>
-        <img
-          className="logo"
-          width="120"
-          alt="MarvelLogoFooter"
-          src={marvelLogoFooterImg}
-        />
-        <br />
-        <a href="http://marvel.com">
-          {'Data provided by Marvel. © '}
-          {currentDate}
-          {' MARVEL'}
-        </a>
-        <br />
-        <a href="http://developer.marvel.com">developer.marvel.com</a>
+        <img width="90" alt="MarvelLogoFooter" src={marvelLogoFooterImg} />
+        <LinksMarvel>
+          <a href="http://marvel.com">
+            {'Data provided by Marvel. © '}
+            {currentDate}
+            {' MARVEL'}
+          </a>
+          <a href="http://developer.marvel.com">developer.marvel.com</a>
+        </LinksMarvel>
       </Content>
     </Container>
   );

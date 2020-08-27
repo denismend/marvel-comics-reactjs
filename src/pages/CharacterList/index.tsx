@@ -3,11 +3,11 @@ import React, { useEffect, useState } from 'react';
 import api from '../../services/api.marvel';
 import Header from '../../components/Header';
 
-import { Container, CharacterCard } from './styles';
+import { Container, CharacterCard, CharacterInfo } from './styles';
 import Footer from '../../components/Footer';
 
 interface MarvelCharacter {
-  name: string;
+  title: string;
   thumbnail: {
     path: string;
     extension: string;
@@ -27,9 +27,9 @@ const CharacterList: React.FC = () => {
 
   useEffect(() => {
     api
-      .get<ResponseApiMarvel>(`characters?offset=10&limit=10`)
+      .get<ResponseApiMarvel>(`comics?limit=10`)
       .then(({ status, data: { data } }) => {
-        console.log(status);
+        console.log(data);
         setCharacters(data.results);
       });
   }, []);
@@ -39,10 +39,12 @@ const CharacterList: React.FC = () => {
       <Header />
       {characters.map(character => (
         <CharacterCard
-          key={character.name}
+          key={character.title}
           characterImg={`url(${character.thumbnail.path}.${character.thumbnail.extension})`}
         >
-          <p>{character.name}</p>
+          <CharacterInfo>
+            <p>{character.title}</p>
+          </CharacterInfo>
         </CharacterCard>
       ))}
 
