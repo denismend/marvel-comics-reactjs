@@ -6,7 +6,7 @@ import CharacterList from '../pages/CharacterList';
 
 const Routes: React.FC = () => (
   <Switch>
-    <Route path="/" exact component={CharacterList} />
+    <Route path="/" component={CharacterList} />
   </Switch>
 );
 

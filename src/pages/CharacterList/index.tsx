@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 
-import { Container, CharacterCard } from './styles';
 import api from '../../services/api.marvel';
+import Header from '../../components/Header';
+
+import { Container, CharacterCard } from './styles';
+import Footer from '../../components/Footer';
 
 interface MarvelCharacter {
   name: string;
@@ -25,14 +28,15 @@ const CharacterList: React.FC = () => {
   useEffect(() => {
     api
       .get<ResponseApiMarvel>(`characters?offset=10&limit=10`)
-      .then(({ status, data: { data }, data: t }) => {
-        console.log(t);
+      .then(({ status, data: { data } }) => {
+        console.log(status);
         setCharacters(data.results);
       });
   }, []);
 
   return (
     <Container>
+      <Header />
       {characters.map(character => (
         <CharacterCard
           key={character.name}
@@ -41,6 +45,8 @@ const CharacterList: React.FC = () => {
           <p>{character.name}</p>
         </CharacterCard>
       ))}
+
+      <Footer />
     </Container>
   );
 };

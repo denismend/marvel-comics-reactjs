@@ -21,7 +21,6 @@ export const CharacterCard = styled.div<CharacterCardProps>`
   height: 210px;
   width: 200px;
   margin: 10px;
-  background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
   transition: opacity 1s;

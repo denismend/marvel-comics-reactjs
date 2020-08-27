@@ -1,15 +1,18 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
+export const Container = styled.footer`
+  position: fixed;
+  left: 0;
+  bottom: 0;
   width: 100%;
   height: 80px;
-  margin: 0 auto;
-  background: rgba(237, 26, 59, 1);
+  background: #342232;
 `;
 
 export const Content = styled.div`
   display: flex;
   align-items: flex-start;
+  flex-direction: column;
 
   a {
     padding: 10px;
