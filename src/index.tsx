@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 
-import './services/axios.interceptor';
+
 
 ReactDOM.render(
   <React.StrictMode>
