@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
       <Content>
         <img width="90" alt="MarvelLogoFooter" src={marvelLogoFooterImg} />
         <LinksMarvel>
-          <a href="http://marvel.com">
+          <a href="http://marvel.com" target="blank">
             {'Data provided by Marvel. © '}
             {currentDate}
             {' MARVEL'}

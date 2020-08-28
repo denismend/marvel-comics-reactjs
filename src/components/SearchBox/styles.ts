@@ -17,6 +17,7 @@ export const Content = styled.div`
   position: relative;
 
   > input {
+    width: 260px;
     height: 40px;
     border: 1px solid var(--color-line-in-white);
     outline: 0;

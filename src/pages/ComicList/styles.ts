@@ -19,8 +19,8 @@ export const Content = styled.div`
   justify-content: center;
   flex-wrap: wrap;
 
-  margin-top: 30px;
-  margin-bottom: 50px;
+  margin-top: 25px;
+  margin-bottom: 30px;
 `;
 
 export const ComicCard = styled.div<ComicCardProps>`
@@ -29,11 +29,12 @@ export const ComicCard = styled.div<ComicCardProps>`
       background: ${props.comicImg};
     `}
 
-  height: 210px;
-  width: 200px;
-  margin: 10px;
+  height: 200px;
+  width: 190px;
+  margin: 6px;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position: left;
   transition: opacity 1s;
   border-radius: 5px;
 
@@ -46,6 +47,10 @@ export const ComicCard = styled.div<ComicCardProps>`
 
   display: flex;
   align-items: flex-end;
+
+  @media screen and (max-width: 420px) {
+    width: 145px;
+  } ;
 `;
 
 export const ComicInfo = styled.div`
