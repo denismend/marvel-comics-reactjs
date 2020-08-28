@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
 
 interface PaginationContextData {
+  searchTerm: string;
+  setSearchTerm(term: string): void;
   page: number;
   setPage(page: number): void;
   totalComics: number;
@@ -19,6 +21,7 @@ const PaginationContext = createContext<PaginationContextData>(
 );
 
 const PaginationProvider: React.FC = ({ children }) => {
+  const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState<number>(1);
   const [totalComics, setTotalComics] = useState<number>(0);
   const [characterSearch, setCharacterSearch] = useState<Character | null>(
@@ -26,6 +29,8 @@ const PaginationProvider: React.FC = ({ children }) => {
   );
 
   const data = {
+    searchTerm,
+    setSearchTerm,
     page,
     setPage,
     totalComics,

@@ -43,6 +43,8 @@ const ComicList: React.FC = () => {
   const { page, setTotalComics, characterSearch } = usePagination();
 
   useEffect(() => {
+    setNoResults(false);
+
     const offset = `&offset=${10 * (page - 1)}`;
 
     let characterFilterGet = '';
@@ -59,9 +61,13 @@ const ComicList: React.FC = () => {
     api
       .get<ResponseApiMarvel>(`comics?limit=10${offset}${characterFilterGet}`)
       .then(({ data: { data } }) => {
-        setComics([...data.results]);
+        setComics(data.results);
         setTotalComics(data.total);
         setLoading(false);
+
+        if (data.total === 0) {
+          setNoResults(true);
+        }
       })
       .catch(() => {
         setLoading(false);
@@ -102,7 +108,7 @@ const ComicList: React.FC = () => {
         )}
       </Content>
 
-      <PaginationBar disabled={loading} />
+      {!noResults && <PaginationBar disabled={loading} />}
 
       <Footer />
     </Container>

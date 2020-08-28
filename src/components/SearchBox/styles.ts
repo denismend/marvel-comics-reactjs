@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { IconButton } from '@material-ui/core';
 
-export const Container = styled.form`
+export const Container = styled.div`
   position: absolute;
   top: 55px;
   display: flex;

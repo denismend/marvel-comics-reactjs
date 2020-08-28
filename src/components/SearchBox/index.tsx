@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -22,11 +22,19 @@ interface ResponseApiMarvel {
 }
 
 const SearchBox: React.FC = () => {
-  const { setCharacterSearch } = usePagination();
-
-  const [searchTerm, setSearchTerm] = useState('');
+  const {
+    setCharacterSearch,
+    setPage,
+    searchTerm,
+    setSearchTerm,
+  } = usePagination();
 
   const handleSearchComics = useCallback(async () => {
+    if (searchTerm === '') {
+      setCharacterSearch({} as Character);
+      return;
+    }
+
     const {
       data: { data },
     } = await api.get<ResponseApiMarvel>(
@@ -34,12 +42,13 @@ const SearchBox: React.FC = () => {
     );
 
     if (data.results.length > 0) {
+      setPage(1);
       setCharacterSearch(data.results[0]);
       return;
     }
 
     setCharacterSearch(null);
-  }, [searchTerm, setCharacterSearch]);
+  }, [searchTerm, setCharacterSearch, setPage]);
 
   return (
     <Container>
@@ -47,7 +56,7 @@ const SearchBox: React.FC = () => {
         <input
           value={searchTerm}
           type="text"
-          placeholder="Personagem..."
+          placeholder="Character..."
           onChange={e => {
             setSearchTerm(e.target.value);
           }}
