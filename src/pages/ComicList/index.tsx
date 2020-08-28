@@ -11,6 +11,7 @@ import PaginationBar from '../../components/PaginationBar';
 import { usePagination } from '../../hooks/pagination';
 
 interface MarvelComic {
+  id: number;
   title: string;
   thumbnail: {
     path: string;
@@ -22,33 +23,35 @@ interface ResponseApiMarvel {
   code: number;
   status: string;
   data: {
+    total: number;
     results: MarvelComic[];
   };
 }
 
 const ComicList: React.FC = () => {
-  const [Comics, setComics] = useState<MarvelComic[]>([]);
+  const [comics, setComics] = useState<MarvelComic[]>([]);
 
-  const { page } = usePagination();
+  const { page, setTotalComics } = usePagination();
 
   useEffect(() => {
-    const offset = `&offset: ${10 * (page - 1)}`;
+    const offset = `&offset=${10 * (page - 1)}`;
 
     api
       .get<ResponseApiMarvel>(`comics?limit=10${offset}`)
       .then(({ data: { data } }) => {
-        setComics(data.results);
+        setComics([...data.results]);
+        setTotalComics(data.total);
       });
-  }, [page]);
+  }, [page, setTotalComics]);
 
   return (
     <Container>
       <Header />
       <SearchBox />
       <Content>
-        {Comics.map(comic => (
+        {comics.map(comic => (
           <ComicCard
-            key={comic.title}
+            key={comic.id}
             comicImg={`url(${comic.thumbnail.path}.${comic.thumbnail.extension})`}
           >
             <ComicInfo>

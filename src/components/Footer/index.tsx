@@ -19,7 +19,9 @@ const Footer: React.FC = () => {
             {currentDate}
             {' MARVEL'}
           </a>
-          <a href="http://developer.marvel.com">developer.marvel.com</a>
+          <a href="http://developer.marvel.com" target="blank">
+            developer.marvel.com
+          </a>
         </LinksMarvel>
       </Content>
     </Container>

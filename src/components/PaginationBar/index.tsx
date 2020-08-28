@@ -15,8 +15,8 @@ const PaginationBar: React.FC = () => {
   );
 
   const totalPaginationPages = useMemo(() => {
-    return (totalComics / 10) as number;
-  }, []);
+    return Math.ceil(totalComics / 10);
+  }, [totalComics]);
 
   return (
     <Container
