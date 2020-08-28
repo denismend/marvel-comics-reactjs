@@ -1,21 +1,32 @@
 import styled, { css } from 'styled-components';
 
-interface CharacterCardProps {
-  characterImg: string;
+interface ComicCardProps {
+  comicImg: string;
 }
 
 export const Container = styled.div`
-  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Content = styled.div`
+  max-width: 1120px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+
+  margin-top: 30px;
+  margin-bottom: 50px;
 `;
 
-export const CharacterCard = styled.div<CharacterCardProps>`
+export const ComicCard = styled.div<ComicCardProps>`
   ${props =>
     css`
-      background: ${props.characterImg};
+      background: ${props.comicImg};
     `}
 
   height: 210px;
@@ -37,15 +48,10 @@ export const CharacterCard = styled.div<CharacterCardProps>`
   align-items: flex-end;
 `;
 
-export const CharacterInfo = styled.div`
+export const ComicInfo = styled.div`
   padding: 5px;
   flex: 1;
-  background: rgb(52, 34, 50, 0.4);
+  background: var(--color-info-card);
   /* opacity: 40%; */
-  color: white;
-
-  p {
-    color: #fff;
-    opacity: 100%;
-  }
+  color: var(--color-white);
 `;

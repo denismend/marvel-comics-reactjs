@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 
 export const Container = styled.footer`
-  padding: 10px
   position: fixed;
+  padding: 5px;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 80px;
-  background: #342232;
+  background: var(--color-background-footer);
 `;
 
 export const Content = styled.div`
@@ -15,7 +14,7 @@ export const Content = styled.div`
   align-items: flex-start;
 
   a {
-    color: #fff;
+    color: var(--color-white);
     font-size: 14px;
   }
 `;
