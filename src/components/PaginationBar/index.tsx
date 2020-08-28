@@ -4,7 +4,11 @@ import { Container } from './styles';
 
 import { usePagination } from '../../hooks/pagination';
 
-const PaginationBar: React.FC = () => {
+interface PaginationProps {
+  disabled: boolean;
+}
+
+const PaginationBar: React.FC<PaginationProps> = ({ disabled }) => {
   const { page, setPage, totalComics } = usePagination();
 
   const handlePageChange = useCallback(
@@ -23,6 +27,7 @@ const PaginationBar: React.FC = () => {
       shape="rounded"
       count={totalPaginationPages}
       page={page}
+      disabled={disabled}
       onChange={handlePageChange}
     />
   );

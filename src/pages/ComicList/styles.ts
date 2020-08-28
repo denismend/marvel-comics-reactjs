@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import { Skeleton } from '@material-ui/lab';
+
 interface ComicCardProps {
   comicImg: string;
 }
@@ -39,7 +41,7 @@ export const ComicCard = styled.div<ComicCardProps>`
   border-radius: 5px;
 
   &:hover {
-    opacity: 0.75;
+    opacity: 0.8;
     transform: scale(1.05);
   }
 
@@ -59,4 +61,12 @@ export const ComicInfo = styled.div`
   background: var(--color-info-card);
   /* opacity: 40%; */
   color: var(--color-white);
+`;
+
+export const LoadingView = styled(Skeleton)`
+  margin: 6px;
+
+  @media screen and (max-width: 420px) {
+    max-width: 145px;
+  } ;
 `;

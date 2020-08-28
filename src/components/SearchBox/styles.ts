@@ -1,16 +1,24 @@
 import styled from 'styled-components';
-import InfoIcon from '@material-ui/icons/Search';
+import { IconButton } from '@material-ui/core';
 
 export const Container = styled.form`
   position: absolute;
-  top: 60px;
+  top: 55px;
   display: flex;
   align-items: center;
+
+  .MuiIconButton-root {
+    color: var(--color-black) !important;
+    padding: 8px;
+
+    :hover {
+      background: var(--color-secundary-header);
+    }
+  }
 `;
 
-export const IconInfoContainer = styled(InfoIcon)`
-  margin-left: 10px;
-  cursor: pointer;
+export const IconButtonContainer = styled(IconButton)`
+  margin-left: 5px !important;
 `;
 
 export const Content = styled.div`

@@ -5,8 +5,13 @@ interface PaginationContextData {
   setPage(page: number): void;
   totalComics: number;
   setTotalComics(total: number): void;
-  characterSearch: number;
-  setCharacterSearch(character: number): void;
+  characterSearch: Character | null;
+  setCharacterSearch(character: Character | null): void;
+}
+
+interface Character {
+  id: number;
+  name: string;
 }
 
 const PaginationContext = createContext<PaginationContextData>(
@@ -16,7 +21,9 @@ const PaginationContext = createContext<PaginationContextData>(
 const PaginationProvider: React.FC = ({ children }) => {
   const [page, setPage] = useState<number>(1);
   const [totalComics, setTotalComics] = useState<number>(0);
-  const [characterSearch, setCharacterSearch] = useState(0);
+  const [characterSearch, setCharacterSearch] = useState<Character | null>(
+    {} as Character,
+  );
 
   const data = {
     page,
