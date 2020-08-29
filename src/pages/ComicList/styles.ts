@@ -22,7 +22,7 @@ export const Content = styled.div`
   flex-wrap: wrap;
 
   margin-top: 25px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 `;
 
 export const ComicCard = styled.div<ComicCardProps>`

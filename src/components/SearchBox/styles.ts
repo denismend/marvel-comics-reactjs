@@ -3,7 +3,7 @@ import { IconButton } from '@material-ui/core';
 
 export const Container = styled.div`
   position: absolute;
-  top: 55px;
+  top: 50px;
   display: flex;
   align-items: center;
 
