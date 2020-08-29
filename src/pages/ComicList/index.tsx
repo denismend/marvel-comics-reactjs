@@ -5,10 +5,8 @@ import { useDispatch } from 'react-redux';
 import * as comixActions from '../../stores/comic/actions';
 
 import api from '../../services/api.marvel';
-import Header from '../../components/Header';
-import NoResults from '../../components/NoResults';
 
-import Footer from '../../components/Footer';
+import NoResults from '../../components/NoResults';
 import SearchBox from '../../components/SearchBox';
 import PaginationBar from '../../components/PaginationBar';
 import { ComicCard } from '../../components/ComicCard';
@@ -81,7 +79,6 @@ const ComicList: React.FC = () => {
 
   return (
     <Container>
-      <Header />
       <SearchBox />
       <Content>
         {loading ? (
@@ -111,8 +108,6 @@ const ComicList: React.FC = () => {
       </Content>
 
       {!noResults && <PaginationBar disabled={loading} />}
-
-      <Footer />
     </Container>
   );
 };

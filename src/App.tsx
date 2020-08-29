@@ -1,16 +1,13 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
-import Routes from './routes';
-
 import GlobalStyle from './styles/global';
-import AppProvider from './hooks';
+
+import Home from './pages/Home';
 
 const App: React.FC = () => (
   <BrowserRouter>
-    <AppProvider>
-      <Routes />
-    </AppProvider>
+    <Home />
 
     <GlobalStyle />
   </BrowserRouter>

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Skeleton } from '@material-ui/lab';
 
 export const Container = styled.div`
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
