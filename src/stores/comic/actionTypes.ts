@@ -1,6 +1,6 @@
 export const SETTING_COMIC = 'SETTING_COMIC';
 
-interface Comic {
+export interface Comic {
   id: number;
   title: string;
   thumbnail: {

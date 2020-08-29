@@ -1,13 +1,35 @@
 import React, { useEffect, useState } from 'react';
 
-import api from '../../services/api.marvel';
-import Header from '../../components/Header';
-import NoResults from '../../components/NoResults';
+import { useSelector } from 'react-redux';
+import { ComicState } from '../../stores/comic/actionTypes';
 
-import { Container } from './styles';
+import Header from '../../components/Header';
+
+import Footer from '../../components/Footer';
+
+import { Container, CarouselView, ComicCard, ComicInfo } from './styles';
 
 const ComicDetails: React.FC = () => {
-  return <Container />;
+  const comicSelected = useSelector((state: ComicState) => state.comic);
+
+  console.log(comicSelected);
+
+  return (
+    <Container>
+      <Header />
+      <CarouselView>
+        <ComicCard
+          key={comicSelected.id}
+          comicImg={`url(${comicSelected.thumbnail.path}.${comicSelected.thumbnail.extension})`}
+        >
+          <ComicInfo>
+            <p>{comicSelected.title}</p>
+          </ComicInfo>
+        </ComicCard>
+      </CarouselView>
+      <Footer />
+    </Container>
+  );
 };
 
 export default ComicDetails;

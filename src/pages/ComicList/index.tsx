@@ -1,44 +1,40 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import * as comixActions from '../../stores/comic/actions';
 
 import api from '../../services/api.marvel';
 import Header from '../../components/Header';
 import NoResults from '../../components/NoResults';
 
-import {
-  Container,
-  Content,
-  ComicCard,
-  ComicInfo,
-  LoadingView,
-} from './styles';
 import Footer from '../../components/Footer';
 import SearchBox from '../../components/SearchBox';
 import PaginationBar from '../../components/PaginationBar';
+import { ComicCard } from '../../components/ComicCard';
 
 import { usePagination } from '../../hooks/pagination';
+import { Comic } from '../../stores/comic/actionTypes';
 
-interface MarvelComic {
-  id: number;
-  title: string;
-  thumbnail: {
-    path: string;
-    extension: string;
-  };
-}
+import { Container, Content, LoadingView } from './styles';
 
 interface ResponseApiMarvel {
   code: number;
   status: string;
   data: {
     total: number;
-    results: MarvelComic[];
+    results: Comic[];
   };
 }
 
 const ComicList: React.FC = () => {
-  const [comics, setComics] = useState<MarvelComic[]>([]);
+  const [comics, setComics] = useState<Comic[]>([]);
   const [loading, setLoading] = useState(true);
   const [noResults, setNoResults] = useState(false);
+
+  const history = useHistory();
+
+  const dispatch = useDispatch();
 
   const { page, setTotalComics, characterSearch } = usePagination();
 
@@ -74,6 +70,15 @@ const ComicList: React.FC = () => {
       });
   }, [page, setTotalComics, characterSearch]);
 
+  const handleClickComicCard = useCallback(
+    (comic: Comic) => {
+      // dispatch to reducer and distribute
+      dispatch(comixActions.setComic(comic));
+      history.push('/details');
+    },
+    [dispatch, history],
+  );
+
   return (
     <Container>
       <Header />
@@ -98,12 +103,9 @@ const ComicList: React.FC = () => {
           comics.map(comic => (
             <ComicCard
               key={comic.id}
-              comicImg={`url(${comic.thumbnail.path}.${comic.thumbnail.extension})`}
-            >
-              <ComicInfo>
-                <p>{comic.title}</p>
-              </ComicInfo>
-            </ComicCard>
+              comic={comic}
+              click={handleClickComicCard}
+            />
           ))
         )}
       </Content>

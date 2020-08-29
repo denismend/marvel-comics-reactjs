@@ -1,22 +1,10 @@
 import styled, { css } from 'styled-components';
 
-import Carousel from 'react-material-ui-carousel';
-
 interface ComicCardProps {
   comicImg: string;
 }
 
-export const Container = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const CarouselView = styled(Carousel)``;
-
-export const ComicCard = styled.div<ComicCardProps>`
+export const ComicCardView = styled.div<ComicCardProps>`
   ${props =>
     css`
       background: ${props.comicImg};
