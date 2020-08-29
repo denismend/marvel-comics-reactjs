@@ -29,7 +29,7 @@ const SearchBox: React.FC = () => {
     setSearchTerm,
   } = usePagination();
 
-  const handleSearchComics = useCallback(
+  const handleSearchCharacter = useCallback(
     async (e: FormEvent) => {
       e.preventDefault();
 
@@ -56,7 +56,7 @@ const SearchBox: React.FC = () => {
   );
 
   return (
-    <Container onSubmit={handleSearchComics}>
+    <Container onSubmit={handleSearchCharacter} data-testid="SearchBox">
       <Content>
         <input
           value={searchTerm}
@@ -67,7 +67,7 @@ const SearchBox: React.FC = () => {
           }}
         />
       </Content>
-      <IconButtonContainer type="submit">
+      <IconButtonContainer type="submit" data-testid="button">
         <SearchIcon />
       </IconButtonContainer>
     </Container>
