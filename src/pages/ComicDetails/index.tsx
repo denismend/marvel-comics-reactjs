@@ -30,8 +30,6 @@ const ComicDetails: React.FC = () => {
 
   return (
     <Container>
-      <button>Back</button>
-
       <CarouselView>
         {comicImages.map(comicImage => (
           <ComicCarouselImage
