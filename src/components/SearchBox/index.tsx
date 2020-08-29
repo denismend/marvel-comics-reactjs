@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, FormEvent } from 'react';
 
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -29,29 +29,34 @@ const SearchBox: React.FC = () => {
     setSearchTerm,
   } = usePagination();
 
-  const handleSearchComics = useCallback(async () => {
-    if (searchTerm === '') {
-      setCharacterSearch({} as Character);
-      return;
-    }
+  const handleSearchComics = useCallback(
+    async (e: FormEvent) => {
+      e.preventDefault();
 
-    const {
-      data: { data },
-    } = await api.get<ResponseApiMarvel>(
-      `characters?nameStartsWith=${searchTerm}&limit=1`,
-    );
+      if (searchTerm === '') {
+        setCharacterSearch({} as Character);
+        return;
+      }
 
-    if (data.results.length > 0) {
-      setPage(1);
-      setCharacterSearch(data.results[0]);
-      return;
-    }
+      const {
+        data: { data },
+      } = await api.get<ResponseApiMarvel>(
+        `characters?nameStartsWith=${searchTerm}&limit=1`,
+      );
 
-    setCharacterSearch(null);
-  }, [searchTerm, setCharacterSearch, setPage]);
+      if (data.results.length > 0) {
+        setPage(1);
+        setCharacterSearch(data.results[0]);
+        return;
+      }
+
+      setCharacterSearch(null);
+    },
+    [searchTerm, setCharacterSearch, setPage],
+  );
 
   return (
-    <Container>
+    <Container onSubmit={handleSearchComics}>
       <Content>
         <input
           value={searchTerm}
@@ -62,7 +67,7 @@ const SearchBox: React.FC = () => {
           }}
         />
       </Content>
-      <IconButtonContainer onClick={handleSearchComics}>
+      <IconButtonContainer type="submit">
         <SearchIcon />
       </IconButtonContainer>
     </Container>
