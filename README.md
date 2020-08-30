@@ -1,5 +1,3 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8c1fc026-fea4-4258-8249-1dc648816447/deploy-status)](https://app.netlify.com/sites/objective-bell-e14dd6/deploys)
-
 <p align="center">
    <img src="./.github/marvel-logo.png" alt="Marvel Logo" width="280"/>
 </p>
@@ -10,24 +8,17 @@
    </a>
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/denismend/marvel-heroes-reactjs?color=774DD6">
 
-  <a aria-label="Completed" href="https://nextlevelweek.com/episodios/omnistack/edicao/2">
-    <img src="https://img.shields.io/badge/Proffy-NLW 2.0-8257E5?logo=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAALVBMVEVHcExxWsF0XMJzXMJxWcFsUsD///9jRrzY0u6Xh9Gsn9n39fyMecy0qd2bjNJWBT0WAAAABHRSTlMA2Do606wF2QAAAGlJREFUGJVdj1cWwCAIBLEsRU3uf9xobDH8+GZwUYi8i6ucJwrxKE+7D0G9Q4vlYqtmCSjndr4CgCgzlyFgfKfKCVO0LrPKjmiqMxGXkJwNnXskqWG+1oSM+BSwD8f29YLNjvx/OQrn+g99oQSoNmt3PgAAAABJRU5ErkJggg=="></img>
-  </a>
   <a href="https://github.com/denismend/nlw-02-proffy/commits/master">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/denismend/marvel-heroes-reactjs?color=774DD6">
   </a> 
+  
   <img alt="License" src="https://img.shields.io/badge/license-MIT-8257E5">
+  
+  [![Netlify Status](https://api.netlify.com/api/v1/badges/8c1fc026-fea4-4258-8249-1dc648816447/deploy-status)](https://app.netlify.com/sites/objective-bell-e14dd6/deploys)
 </p>
 
 <p align="center">
-   :rocket: Project made to connect teachers to students, made in Next Level Week #2 @Rocketseat
-</p>
-
-<p align="center">
-    <a href="README.md">English</a>
-    ·
-    <a href="README-pt.md">Portuguese</a>
-</p>
+   :rocket: Project made to show all comics from Marvel </p>
 
 <div align="center">
   <sub>Marvel Comics Page project. Built with ❤︎ by
@@ -68,23 +59,27 @@ This project was made using the follow technologies:
 
 # :rocket: Features
 
-* Website to sign up teachers and students.
-* App to connect teachers and students.
+* Website to show comics from ©Marvel,
+* Search comics from Characters (Heroes),
+* See Details from Comic (Images related, Characters involved, and Creators)
 
 # :construction_worker: How to run
 ```bash
-# Clone Repository
-$ git clone https://github.com/denismend/marvel-heroes-reactjs.git
+# Clone the project on your computer via Download (option Code -> Download ZIP)
+    - If you want to do it with Git, make sure you have Git installed, follow the link https://git-scm.com/
+    - then run the command in terminal:
+        $ git clone https://github.com/denismend/marvel-heroes-reactjs.git
+    
+# In the terminal or prompt(cmd), access the project root;
 ```
 
-### 💻 Run Web Project
-
+### 💻 Run Project
 ```
 # Install Dependencies
-$ yarn install
+$ npm install
 
 # Run Aplication
-$ yarn start
+$ npm start
 ```
 Go to http://localhost:3000/ to see the result.
 
