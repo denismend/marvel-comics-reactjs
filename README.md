@@ -4,18 +4,18 @@
 
 <p align="center">	
    <a href="https://linkedin.com/in/denis-ladeira-814365115/">
-      <img alt="Denis Mendonça Ladeira" src="https://img.shields.io/badge/-DenisLadeira-8257E5?style=flat&logo=Linkedin&logoColor=white" />
+      <img alt="Denis Mendonça Ladeira" src="https://img.shields.io/badge/-DenisLadeira-red?style=flat&logo=Linkedin&logoColor=white" />
    </a>
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/denismend/marvel-comics-reactjs?color=774DD6">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/denismend/marvel-comics-reactjs?color=red">
 
   <a href="https://github.com/denismend/nlw-02-proffy/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/denismend/marvel-comics-reactjs?color=774DD6">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/denismend/marvel-comics-reactjs?color=red">
   </a> 
   
-  <img alt="License" src="https://img.shields.io/badge/license-MIT-8257E5">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-red">
   
   <a href="https://app.netlify.com/sites/objective-bell-e14dd6/deploys">
-      <img alt="Netfly" src="https://img.shields.io/badge/netfly-Success-8257E5?style=flat&logo=netlify&logoColor=white" />
+      <img alt="Netfly" src="https://img.shields.io/badge/netfly-Success-red?style=flat&logo=netlify&logoColor=white" />
    
    </a>
 </p>
