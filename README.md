@@ -1,46 +1,124 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+   <img src="./.github/marvel-logo.png" alt="Marvel Logo" width="280"/>
+</p>
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8c1fc026-fea4-4258-8249-1dc648816447/deploy-status)](https://app.netlify.com/sites/objective-bell-e14dd6/deploys)
+<p align="center">	
+   <a href="https://linkedin.com/in/denis-ladeira-814365115/">
+      <img alt="Denis Mendonça Ladeira" src="https://img.shields.io/badge/-DenisLadeira-red?style=flat&logo=Linkedin&logoColor=white" />
+   </a>
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/denismend/marvel-comics-reactjs?color=red">
 
-## Available Scripts
+  <a href="https://github.com/denismend/nlw-02-proffy/commits/master">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/denismend/marvel-comics-reactjs?color=red">
+  </a> 
+  
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-red">
+  
+  <a href="https://app.netlify.com/sites/objective-bell-e14dd6/deploys">
+      <img alt="Netfly" src="https://img.shields.io/badge/netfly-Success-red?style=flat&logo=netlify&logoColor=white" />
+   
+   </a>
+</p>
 
-In the project directory, you can run:
+<p align="center">
+   :rocket: Project made to show all comics from Marvel </p>
 
-### `yarn start`
+<div align="center">
+  <sub>Marvel Comics Page project. Built with ❤︎ by
+    <a href="https://github.com/denismend">Denis Ladeira</a> and
+    <a href="https://github.com/denismend/marvel-comics-reactjs/graphs/contributors">
+      contributors
+    </a>
+  </sub>
+</div>
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<p align="center">
+  <img src=".github/sample.gif">
+</p>
 
-### `yarn test`
+# :pushpin: Table of Contents
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* [Technologies](#computer-technologies)
+* [Features](#rocket-features)
+* [How to Run](#construction_worker-how-to-run)
+* [Found a bug? Missing a specific feature?](#bug-issues)
+* [Contributing](#tada-contributing)
+* [License](#closed_book-license)
 
-### `yarn build`
+# :computer: Technologies
+This project was made using the follow technologies:
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* [Typescript](https://www.typescriptlang.org/)      
+* [React](https://reactjs.org/)      
+* [Redux](https://redux.js.org/)       
+* [context-api](https://reactjs.org/)      
+* [axios](https://github.com/axios/axios)
+* [styled-components](https://styled-components.com/)
+* [jest](https://jestjs.io/)
+* [testing-library](https://testing-library.com/)
+* [material-ui](https://material-ui.com/)
+* [react-material-ui-carousel](https://www.npmjs.com/package/react-material-ui-carousel)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+# :rocket: Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+* Website to show comics from ©Marvel,
+* Search comics from Characters (Heroes),
+* See Details from Comic (Images related, Characters involved, and Creators)
 
-### `yarn eject`
+# :construction_worker: How to run
+```bash
+# Clone the project on your computer via Download (option Code -> Download ZIP)
+    - If you want to do it with Git, make sure you have Git installed, 
+      follow the link https://git-scm.com/
+    - then run the command in terminal:
+        $ git clone https://github.com/denismend/marvel-comics-reactjs.git
+    
+# In the terminal or prompt(cmd), access the project root;
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 💻 Run Project
+```
+# Install Dependencies
+$ npm install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Run Aplication
+$ npm start
+```
+Go to http://localhost:3000/ to see the result.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# :bug: Issues
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Feel free to **file a new issue** with a respective title and description on the the [Marvel Comics Page](https://github.com/denismend/marvel-comics-reactjs/issues) repository. If you already found a solution to your problem, **i would love to review your pull request**!
 
-## Learn More
+# :tada: Contributing
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+There are many forms to contribute with the project, first of all you can give this github repo a Star.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+If you want do help with the code follow the steps bellow
+
+```ps
+# Fork using GitHub official command line
+# If you don't have the GitHub CLI, use the web site to do that.
+$ gh repo fork denismend/marvel-comics-reactjs
+
+# Clone your fork
+$ git clone {your-fork-url}
+$ cd marvel-comics-reactjs
+
+# Create a branch with your feature
+$ git checkout -b {branch-name}
+
+# Make the commit with your changes
+$ git commit -m 'Feat: {feature-name}'
+
+# Send the code to your remote branch
+$ git push origin {branch-name}
+```
+
+# :closed_book: License
+
+Released in 2020 :closed_book: License
+
+Made with love by [Denis Ladeira](https://github.com/denismend) 🚀.
+This project is under the [MIT license](./LICENSE).
