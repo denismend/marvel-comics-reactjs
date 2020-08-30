@@ -34,7 +34,7 @@
 
 <p align="center"
   <span>
-  <a href="https://marvelcomics-denismend.netlify.app/" target="blank">Demo</a>
+    <a href="https://marvelcomics-denismend.netlify.app/">Demo</a>
   </span>
 </p>
 
