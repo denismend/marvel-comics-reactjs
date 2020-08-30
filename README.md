@@ -1,20 +1,23 @@
 <p align="center">
-   <img src="./.github/marvel-logo.png" alt="Marvel Logo" width="280"/>
+   <img src="./.github/marvel-logo.jpg" alt="Marvel Logo" width="280"/>
 </p>
 
 <p align="center">	
    <a href="https://linkedin.com/in/denis-ladeira-814365115/">
       <img alt="Denis Mendonça Ladeira" src="https://img.shields.io/badge/-DenisLadeira-8257E5?style=flat&logo=Linkedin&logoColor=white" />
    </a>
-  <img alt="Repository size" src="https://img.shields.io/github/repo-size/denismend/marvel-heroes-reactjs?color=774DD6">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/denismend/marvel-comics-reactjs?color=774DD6">
 
   <a href="https://github.com/denismend/nlw-02-proffy/commits/master">
-    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/denismend/marvel-heroes-reactjs?color=774DD6">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/denismend/marvel-comics-reactjs?color=774DD6">
   </a> 
   
   <img alt="License" src="https://img.shields.io/badge/license-MIT-8257E5">
   
-  [![Netlify Status](https://api.netlify.com/api/v1/badges/8c1fc026-fea4-4258-8249-1dc648816447/deploy-status)](https://app.netlify.com/sites/objective-bell-e14dd6/deploys)
+  <a href="https://app.netlify.com/sites/objective-bell-e14dd6/deploys">
+      <img alt="Netfly" src="https://img.shields.io/badge/netfly-Success-8257E5?style=flat&logo=netlify&logoColor=white" />
+   
+   </a>
 </p>
 
 <p align="center">
@@ -23,7 +26,7 @@
 <div align="center">
   <sub>Marvel Comics Page project. Built with ❤︎ by
     <a href="https://github.com/denismend">Denis Ladeira</a> and
-    <a href="https://github.com/denismend/marvel-heroes-reactjs/graphs/contributors">
+    <a href="https://github.com/denismend/marvel-comics-reactjs/graphs/contributors">
       contributors
     </a>
   </sub>
@@ -68,7 +71,7 @@ This project was made using the follow technologies:
 # Clone the project on your computer via Download (option Code -> Download ZIP)
     - If you want to do it with Git, make sure you have Git installed, follow the link https://git-scm.com/
     - then run the command in terminal:
-        $ git clone https://github.com/denismend/marvel-heroes-reactjs.git
+        $ git clone https://github.com/denismend/marvel-comics-reactjs.git
     
 # In the terminal or prompt(cmd), access the project root;
 ```
@@ -85,7 +88,7 @@ Go to http://localhost:3000/ to see the result.
 
 # :bug: Issues
 
-Feel free to **file a new issue** with a respective title and description on the the [Marvel Comics Page](https://github.com/denismend/marvel-heroes-reactjs/issues) repository. If you already found a solution to your problem, **i would love to review your pull request**!
+Feel free to **file a new issue** with a respective title and description on the the [Marvel Comics Page](https://github.com/denismend/marvel-comics-reactjs/issues) repository. If you already found a solution to your problem, **i would love to review your pull request**!
 
 # :tada: Contributing
 
@@ -96,11 +99,11 @@ If you want do help with the code follow the steps bellow
 ```ps
 # Fork using GitHub official command line
 # If you don't have the GitHub CLI, use the web site to do that.
-$ gh repo fork denismend/marvel-heroes-reactjs
+$ gh repo fork denismend/marvel-comics-reactjs
 
 # Clone your fork
 $ git clone {your-fork-url}
-$ cd marvel-heroes-reactjs
+$ cd marvel-comics-reactjs
 
 # Create a branch with your feature
 $ git checkout -b {branch-name}
