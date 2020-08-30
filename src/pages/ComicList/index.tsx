@@ -37,36 +37,40 @@ const ComicList: React.FC = () => {
   const { page, setTotalComics, characterSearch } = usePagination();
 
   useEffect(() => {
-    setNoResults(false);
+    async function loadComics(): Promise<void> {
+      setNoResults(false);
 
-    const offset = `&offset=${10 * (page - 1)}`;
+      const offset = `&offset=${10 * (page - 1)}`;
 
-    let characterFilterGet = '';
-    if (!characterSearch) {
-      setNoResults(true);
-      return;
+      let characterFilterGet = '';
+      if (!characterSearch) {
+        setNoResults(true);
+        return;
+      }
+      if (characterSearch.id) {
+        characterFilterGet = `&characters=${characterSearch.id}`;
+      }
+
+      setLoading(true);
+
+      api
+        .get<ResponseApiMarvel>(`comics?limit=10${offset}${characterFilterGet}`)
+        .then(({ data: { data } }) => {
+          setComics(data.results);
+          setTotalComics(data.total);
+          setLoading(false);
+
+          if (data.total === 0) {
+            setNoResults(true);
+          }
+        })
+        .catch(() => {
+          setLoading(false);
+        });
     }
-    if (characterSearch.id) {
-      characterFilterGet = `&characters=${characterSearch.id}`;
-    }
 
-    setLoading(true);
-
-    api
-      .get<ResponseApiMarvel>(`comics?limit=10${offset}${characterFilterGet}`)
-      .then(({ data: { data } }) => {
-        setComics(data.results);
-        setTotalComics(data.total);
-        setLoading(false);
-
-        if (data.total === 0) {
-          setNoResults(true);
-        }
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  }, [page, setTotalComics, characterSearch]);
+    loadComics();
+  }, [page, characterSearch, setTotalComics]);
 
   const handleClickComicCard = useCallback(
     (comic: Comic) => {
