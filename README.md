@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="./.github/marvel-logo.jpg" alt="Marvel Logo" width="280"/>
+   <img src="./.github/marvel-logo.png" alt="Marvel Logo" width="280"/>
 </p>
 
 <p align="center">	
@@ -69,7 +69,8 @@ This project was made using the follow technologies:
 # :construction_worker: How to run
 ```bash
 # Clone the project on your computer via Download (option Code -> Download ZIP)
-    - If you want to do it with Git, make sure you have Git installed, follow the link https://git-scm.com/
+    - If you want to do it with Git, make sure you have Git installed, 
+      follow the link https://git-scm.com/
     - then run the command in terminal:
         $ git clone https://github.com/denismend/marvel-comics-reactjs.git
     
