@@ -1,19 +1,37 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useCallback,
+  useEffect,
+} from 'react';
+import api from '../services/api.marvel';
 
-interface PaginationContextData {
-  searchTerm: string;
-  setSearchTerm(term: string): void;
-  page: number;
-  setPage(page: number): void;
-  totalComics: number;
-  setTotalComics(total: number): void;
-  characterSearch: Character | null;
-  setCharacterSearch(character: Character | null): void;
-}
+import { Comic } from '../stores/comic/actionTypes';
 
 interface Character {
   id: number;
   name: string;
+}
+
+interface ResponseApiMarvel {
+  code: number;
+  status: string;
+  data: {
+    total: number;
+    results: Comic[];
+  };
+}
+
+interface PaginationContextData {
+  page: number;
+  searchTerm: string;
+  setSearchTerm(term: string): void;
+  loading: boolean;
+  comics: Comic[];
+  totalComics: number;
+  handleSearchTerm(character: Character | null): void;
+  handleChangePage(newPage: number): void;
 }
 
 const PaginationContext = createContext<PaginationContextData>(
@@ -28,15 +46,75 @@ const PaginationProvider: React.FC = ({ children }) => {
     {} as Character,
   );
 
+  const [loading, setLoading] = useState(false);
+  const [comics, setComics] = useState<Comic[]>([]);
+
+  const mountFilterGet = useCallback(
+    (newPage: number, newCharacterToSearch: Character | null): string => {
+      const offset = `&offset=${10 * (newPage - 1)}`;
+
+      let characterFilterGet = '';
+      if (newCharacterToSearch?.id) {
+        characterFilterGet = `&characters=${newCharacterToSearch.id}`;
+      }
+
+      return `limit=10${offset}${characterFilterGet}`;
+    },
+    [],
+  );
+
+  const loadComics = useCallback(
+    async (newPage: number, newCharacterToSearch: Character | null) => {
+      setLoading(true);
+
+      const filter = mountFilterGet(newPage, newCharacterToSearch);
+      const response = await api.get<ResponseApiMarvel>(`comics?${filter}`);
+
+      setLoading(false);
+      const {
+        data: { data },
+      } = response;
+
+      setPage(newPage);
+      setCharacterSearch(newCharacterToSearch);
+      setComics(data.results);
+      setTotalComics(data.total);
+    },
+    [setComics, mountFilterGet],
+  );
+
+  const handleSearchTerm = useCallback(
+    (newCharacterToSearch: Character | null) => {
+      if (newCharacterToSearch) {
+        loadComics(1, newCharacterToSearch);
+        return;
+      }
+
+      setTotalComics(0);
+    },
+    [loadComics],
+  );
+
+  const handleChangePage = useCallback(
+    (newPage: number) => {
+      loadComics(newPage, characterSearch);
+    },
+    [loadComics, characterSearch],
+  );
+
+  useEffect(() => {
+    loadComics(1, {} as Character);
+  }, [loadComics]);
+
   const data = {
+    page,
     searchTerm,
     setSearchTerm,
-    page,
-    setPage,
+    loading,
+    comics,
     totalComics,
-    setTotalComics,
-    characterSearch,
-    setCharacterSearch,
+    handleSearchTerm,
+    handleChangePage,
   };
 
   return (

@@ -1,10 +1,8 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import * as comixActions from '../../stores/comic/actions';
-
-import api from '../../services/api.marvel';
 
 import NoResults from '../../components/NoResults';
 import SearchBox from '../../components/SearchBox';
@@ -26,47 +24,11 @@ interface ResponseApiMarvel {
 }
 
 const ComicList: React.FC = () => {
-  const [comics, setComics] = useState<Comic[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [noResults, setNoResults] = useState(false);
-
   const history = useHistory();
 
   const dispatch = useDispatch();
 
-  const { page, setTotalComics, characterSearch } = usePagination();
-
-  useEffect(() => {
-    setNoResults(false);
-
-    const offset = `&offset=${10 * (page - 1)}`;
-
-    let characterFilterGet = '';
-    if (!characterSearch) {
-      setNoResults(true);
-      return;
-    }
-    if (characterSearch.id) {
-      characterFilterGet = `&characters=${characterSearch.id}`;
-    }
-
-    setLoading(true);
-
-    api
-      .get<ResponseApiMarvel>(`comics?limit=10${offset}${characterFilterGet}`)
-      .then(({ data: { data } }) => {
-        setComics(data.results);
-        setTotalComics(data.total);
-        setLoading(false);
-
-        if (data.total === 0) {
-          setNoResults(true);
-        }
-      })
-      .catch(() => {
-        setLoading(false);
-      });
-  }, [page, characterSearch, setTotalComics]);
+  const { comics, loading, totalComics } = usePagination();
 
   const handleClickComicCard = useCallback(
     (comic: Comic) => {
@@ -94,7 +56,7 @@ const ComicList: React.FC = () => {
             <LoadingView variant="rect" width={190} height={200} />
             <LoadingView variant="rect" width={190} height={200} />
           </>
-        ) : noResults ? (
+        ) : totalComics === 0 ? (
           <NoResults />
         ) : (
           comics.map(comic => (
@@ -107,7 +69,7 @@ const ComicList: React.FC = () => {
         )}
       </Content>
 
-      {!noResults && <PaginationBar disabled={loading} />}
+      {totalComics > 0 && <PaginationBar disabled={loading} />}
     </Container>
   );
 };

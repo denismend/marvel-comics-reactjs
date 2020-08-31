@@ -9,13 +9,13 @@ interface PaginationProps {
 }
 
 const PaginationBar: React.FC<PaginationProps> = ({ disabled }) => {
-  const { page, setPage, totalComics } = usePagination();
+  const { handleChangePage, page, totalComics } = usePagination();
 
   const handlePageChange = useCallback(
     (event: object, newPage: number) => {
-      setPage(newPage);
+      handleChangePage(newPage);
     },
-    [setPage],
+    [handleChangePage],
   );
 
   const totalPaginationPages = useMemo(() => {

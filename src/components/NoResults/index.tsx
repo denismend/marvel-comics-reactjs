@@ -10,11 +10,10 @@ interface Character {
 }
 
 const NoResults: React.FC = () => {
-  const { searchTerm, setSearchTerm, setCharacterSearch } = usePagination();
+  const { searchTerm, setSearchTerm } = usePagination();
 
   const handleGoBack = (): void => {
     setSearchTerm('');
-    setCharacterSearch({} as Character);
   };
 
   const [term] = useState(searchTerm);

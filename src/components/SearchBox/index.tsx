@@ -22,37 +22,27 @@ interface ResponseApiMarvel {
 }
 
 const SearchBox: React.FC = () => {
-  const {
-    setCharacterSearch,
-    setPage,
-    searchTerm,
-    setSearchTerm,
-  } = usePagination();
+  const { searchTerm, setSearchTerm, handleSearchTerm } = usePagination();
 
   const handleSearchCharacter = useCallback(
     async (e: FormEvent) => {
       e.preventDefault();
 
-      if (searchTerm === '') {
-        setCharacterSearch({} as Character);
-        return;
+      let newCharacterToSearch = {} as Character | null;
+
+      if (searchTerm !== '') {
+        const {
+          data: { data },
+        } = await api.get<ResponseApiMarvel>(
+          `characters?nameStartsWith=${searchTerm}&limit=1`,
+        );
+
+        newCharacterToSearch = data.total > 0 ? { ...data.results[0] } : null;
       }
 
-      const {
-        data: { data },
-      } = await api.get<ResponseApiMarvel>(
-        `characters?nameStartsWith=${searchTerm}&limit=1`,
-      );
-
-      if (data.results.length > 0) {
-        setPage(1);
-        setCharacterSearch(data.results[0]);
-        return;
-      }
-
-      setCharacterSearch(null);
+      handleSearchTerm(newCharacterToSearch);
     },
-    [searchTerm, setCharacterSearch, setPage],
+    [handleSearchTerm, searchTerm],
   );
 
   return (
