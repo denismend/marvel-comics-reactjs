@@ -19,7 +19,7 @@ const PaginationBar: React.FC<PaginationProps> = ({ disabled }) => {
   );
 
   const totalPaginationPages = useMemo(() => {
-    return Math.ceil(totalComics / 10);
+    return Math.ceil(totalComics.value / 10);
   }, [totalComics]);
 
   return (

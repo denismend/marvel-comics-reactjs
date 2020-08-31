@@ -10,10 +10,16 @@ interface Character {
 }
 
 const NoResults: React.FC = () => {
-  const { searchTerm, setSearchTerm } = usePagination();
+  const {
+    searchTerm,
+    setSearchTerm,
+    totalComics,
+    setTotalComics,
+  } = usePagination();
 
   const handleGoBack = (): void => {
     setSearchTerm('');
+    setTotalComics({ value: totalComics.backup, backup: totalComics.backup });
   };
 
   const [term] = useState(searchTerm);

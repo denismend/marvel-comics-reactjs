@@ -23,13 +23,19 @@ interface ResponseApiMarvel {
   };
 }
 
+interface TotalComic {
+  value: number;
+  backup: number;
+}
+
 interface PaginationContextData {
   page: number;
   searchTerm: string;
   setSearchTerm(term: string): void;
   loading: boolean;
   comics: Comic[];
-  totalComics: number;
+  totalComics: TotalComic;
+  setTotalComics(newTotal: TotalComic): void;
   handleSearchTerm(character: Character | null): void;
   handleChangePage(newPage: number): void;
 }
@@ -41,13 +47,17 @@ const PaginationContext = createContext<PaginationContextData>(
 const PaginationProvider: React.FC = ({ children }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState<number>(1);
-  const [totalComics, setTotalComics] = useState<number>(0);
   const [characterSearch, setCharacterSearch] = useState<Character | null>(
     {} as Character,
   );
 
-  const [loading, setLoading] = useState(false);
   const [comics, setComics] = useState<Comic[]>([]);
+  const [totalComics, setTotalComics] = useState<TotalComic>({
+    value: 0,
+    backup: 0,
+  });
+
+  const [loading, setLoading] = useState(false);
 
   const mountFilterGet = useCallback(
     (newPage: number, newCharacterToSearch: Character | null): string => {
@@ -78,7 +88,9 @@ const PaginationProvider: React.FC = ({ children }) => {
       setPage(newPage);
       setCharacterSearch(newCharacterToSearch);
       setComics(data.results);
-      setTotalComics(data.total);
+      setTotalComics(prevState => {
+        return { value: data.total, backup: prevState.value };
+      });
     },
     [setComics, mountFilterGet],
   );
@@ -90,7 +102,9 @@ const PaginationProvider: React.FC = ({ children }) => {
         return;
       }
 
-      setTotalComics(0);
+      setTotalComics(prevState => {
+        return { value: 0, backup: prevState.value };
+      });
     },
     [loadComics],
   );
@@ -113,6 +127,7 @@ const PaginationProvider: React.FC = ({ children }) => {
     loading,
     comics,
     totalComics,
+    setTotalComics,
     handleSearchTerm,
     handleChangePage,
   };

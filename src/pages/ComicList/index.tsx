@@ -56,7 +56,7 @@ const ComicList: React.FC = () => {
             <LoadingView variant="rect" width={190} height={200} />
             <LoadingView variant="rect" width={190} height={200} />
           </>
-        ) : totalComics === 0 ? (
+        ) : totalComics.value === 0 ? (
           <NoResults />
         ) : (
           comics.map(comic => (
@@ -69,7 +69,7 @@ const ComicList: React.FC = () => {
         )}
       </Content>
 
-      {totalComics > 0 && <PaginationBar disabled={loading} />}
+      {totalComics.value > 0 && <PaginationBar disabled={loading} />}
     </Container>
   );
 };
