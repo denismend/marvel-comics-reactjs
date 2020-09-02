@@ -12,6 +12,7 @@ interface ComicCardProps {
 export const ComicCard: React.FC<ComicCardProps> = ({ comic, click }) => {
   return (
     <ComicCardView
+      data-testid={`comic${comic.id}`}
       key={comic.id}
       onClick={() => click(comic)}
       comicImg={`url(${comic.thumbnail.path}.${comic.thumbnail.extension})`}

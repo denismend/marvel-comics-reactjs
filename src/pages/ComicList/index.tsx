@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import * as comixActions from '../../stores/comic/actions';
+import { setComic } from '../../stores/comic/actions';
 
 import NoResults from '../../components/NoResults';
 import SearchBox from '../../components/SearchBox';
@@ -33,7 +33,7 @@ const ComicList: React.FC = () => {
   const handleClickComicCard = useCallback(
     (comic: Comic) => {
       // dispatch to reducer and distribute
-      dispatch(comixActions.setComic(comic));
+      dispatch(setComic(comic));
       history.push('/details');
     },
     [dispatch, history],

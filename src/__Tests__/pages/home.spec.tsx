@@ -1,30 +1,8 @@
 import React from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 
-import { useHistory } from 'react-router-dom';
-import ComicList from '../../pages/ComicList';
+import Home from '../../pages/Home';
 // const apiMock = new AxiosMock(api);
-
-const mockHistoryPush = jest.fn();
-
-jest.mock('react-router-dom', () => {
-  return {
-    useHistory: () => ({
-      push: mockHistoryPush,
-    }),
-  };
-});
-
-jest.mock('react-redux', () => {
-  return {
-    useDispatch: () => jest.fn(),
-  };
-});
-
-interface Character {
-  id: number;
-  name: string;
-}
 
 const wait = (amount = 0): Promise<void> => {
   return new Promise(resolve => setTimeout(resolve, amount));
@@ -35,6 +13,12 @@ const actWait = async (amount = 0): Promise<void> => {
     await wait(amount);
   });
 };
+
+jest.mock('react-redux', () => {
+  return {
+    useDispatch: () => jest.fn(),
+  };
+});
 
 jest.mock('../../hooks/pagination', () => {
   return {
@@ -66,15 +50,8 @@ jest.mock('../../hooks/pagination', () => {
 });
 
 describe('ComicList Page', () => {
-  it('should be able to list comics from api', async () => {
-    const { getByText } = render(<ComicList />);
-
-    expect(getByText('HULK #1')).toBeTruthy();
-    expect(getByText('X-MEN #1')).toBeTruthy();
-  });
-
   it('should be able to navigate to the Comics details', async () => {
-    const { getByTestId } = render(<ComicList />);
+    const { getByTestId } = render(<Home />);
 
     await actWait(500);
 
@@ -83,8 +60,8 @@ describe('ComicList Page', () => {
 
     await actWait();
 
-    const result = jest.spyOn(useHistory.prototype, 'push');
+    console.log(getByTestId('comic1'));
 
-    expect(result).toHaveBeenLastCalledWith('/details');
+    expect(window.location.pathname).toEqual('/details');
   });
 });
