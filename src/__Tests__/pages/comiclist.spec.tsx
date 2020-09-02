@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, act, fireEvent } from '@testing-library/react';
 
-import { useHistory } from 'react-router-dom';
 import ComicList from '../../pages/ComicList';
 // const apiMock = new AxiosMock(api);
 
@@ -83,8 +82,6 @@ describe('ComicList Page', () => {
 
     await actWait();
 
-    const result = jest.spyOn(useHistory.prototype, 'push');
-
-    expect(result).toHaveBeenLastCalledWith('/details');
+    expect(mockHistoryPush).toHaveBeenLastCalledWith('/details');
   });
 });
