@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 
 import { usePagination } from '../../hooks/pagination';
 
@@ -22,7 +22,9 @@ const NoResults: React.FC = () => {
     setTotalComics({ value: totalComics.backup, backup: totalComics.backup });
   };
 
-  const [term] = useState(searchTerm);
+  const term = useMemo(() => {
+    return searchTerm;
+  }, [searchTerm]);
 
   return (
     <Container>

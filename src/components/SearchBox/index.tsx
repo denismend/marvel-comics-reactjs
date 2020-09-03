@@ -1,4 +1,4 @@
-import React, { useCallback, FormEvent } from 'react';
+import React, { useCallback, FormEvent, useState, useEffect } from 'react';
 
 import SearchIcon from '@material-ui/icons/Search';
 
@@ -24,17 +24,27 @@ interface ResponseApiMarvel {
 const SearchBox: React.FC = () => {
   const { searchTerm, setSearchTerm, handleSearchTerm } = usePagination();
 
+  const [searchTermComponent, setSearchTermComponent] = useState<string>(
+    searchTerm,
+  );
+
+  useEffect(() => {
+    setSearchTermComponent(searchTerm);
+  }, [searchTerm]);
+
   const handleSearchCharacter = useCallback(
     async (e: FormEvent) => {
       e.preventDefault();
 
+      setSearchTerm(searchTermComponent);
+
       let newCharacterToSearch = {} as Character | null;
 
-      if (searchTerm !== '') {
+      if (searchTermComponent !== '') {
         const {
           data: { data },
         } = await api.get<ResponseApiMarvel>(
-          `characters?nameStartsWith=${searchTerm}&limit=1`,
+          `characters?nameStartsWith=${searchTermComponent}&limit=1`,
         );
 
         newCharacterToSearch = data.total > 0 ? { ...data.results[0] } : null;
@@ -42,18 +52,18 @@ const SearchBox: React.FC = () => {
 
       handleSearchTerm(newCharacterToSearch);
     },
-    [handleSearchTerm, searchTerm],
+    [handleSearchTerm, setSearchTerm, searchTermComponent],
   );
 
   return (
     <Container onSubmit={handleSearchCharacter} data-testid="SearchBox">
       <Content>
         <input
-          value={searchTerm}
+          value={searchTermComponent}
           type="text"
           placeholder="Character..."
           onChange={e => {
-            setSearchTerm(e.target.value);
+            setSearchTermComponent(e.target.value);
           }}
         />
       </Content>

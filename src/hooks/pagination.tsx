@@ -103,7 +103,10 @@ const PaginationProvider: React.FC = ({ children }) => {
       }
 
       setTotalComics(prevState => {
-        return { value: 0, backup: prevState.value };
+        if (prevState.value !== 0) {
+          return { value: 0, backup: prevState.value };
+        }
+        return prevState;
       });
     },
     [loadComics],
