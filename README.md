@@ -14,7 +14,7 @@
   
   <img alt="License" src="https://img.shields.io/badge/license-MIT-red">
   
-  <a href="https://app.netlify.com/sites/objective-bell-e14dd6/deploys">
+  <a href="https://app.netlify.com/sites/marvelcomics-denismend/deploys">
       <img alt="Netfly" src="https://img.shields.io/badge/netfly-Success-red?style=flat&logo=netlify&logoColor=white" />
    
    </a>
@@ -33,6 +33,7 @@
 </div>
 
 <p align="center"
+  <br /><br />
   <span>
     <a href="https://marvelcomics-denismend.netlify.app/">Demo</a>
   </span>
